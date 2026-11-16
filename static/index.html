@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Моя библиотека</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <h1>Моя библиотека</h1>
+      <div class="user-box">
+        <span id="user-login"></span>
+        <button id="logout-btn" class="btn btn-light" type="button">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Статистика</h2>
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">всего книг</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-read">0</span>
+          <span class="stat-label">прочитано</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-rating">—</span>
+          <span class="stat-label">средняя оценка</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-sum">0</span>
+          <span class="stat-label">сумма оценок</span>
+        </div>
+      </div>
+      <ul id="genre-stats" class="genre-stats"></ul>
+      <p id="stats-error" class="error" hidden></p>
+    </section>
+
+    <section class="card">
+      <h2>Жанры</h2>
+      <form id="genre-form" class="inline-form">
+        <input id="genre-name" type="text" maxlength="60" placeholder="Название жанра" required>
+        <button class="btn" type="submit">Добавить</button>
+      </form>
+      <p id="genres-empty" class="muted" hidden>Жанров пока нет</p>
+      <ul id="genre-list" class="genre-list"></ul>
+      <p id="genre-error" class="error" hidden></p>
+    </section>
+
+    <section class="card">
+      <h2 id="form-title">Добавить книгу</h2>
+      <form id="book-form">
+        <label>Название
+          <input id="book-title" type="text" maxlength="200" required>
+        </label>
+        <label>Автор
+          <input id="book-author" type="text" maxlength="100" required>
+        </label>
+
+        <div class="form-row">
+          <label>Год издания
+            <input id="book-year" type="number" min="0" max="2100">
+          </label>
+          <label>Оценка (0–5)
+            <input id="book-rating" type="number" min="0" max="5" step="0.1">
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Жанр
+            <select id="book-genre">
+              <option value="">Без жанра</option>
+            </select>
+          </label>
+          <label>Дата прочтения
+            <input id="book-finished" type="date">
+          </label>
+          <label class="checkbox">
+            <input id="book-is-read" type="checkbox"> Прочитана
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button id="save-btn" class="btn" type="submit">Сохранить</button>
+          <button id="cancel-btn" class="btn btn-light" type="button" hidden>Отмена</button>
+        </div>
+        <p id="form-error" class="error" hidden></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Книги</h2>
+
+      <div class="filters">
+        <input id="search" type="search" placeholder="Поиск по названию или автору">
+        <select id="filter-genre">
+          <option value="">Все жанры</option>
+        </select>
+        <select id="filter-read">
+          <option value="">Все книги</option>
+          <option value="true">Прочитанные</option>
+          <option value="false">Непрочитанные</option>
+        </select>
+        <select id="filter-sort">
+          <option value="title:asc">Название А–Я</option>
+          <option value="title:desc">Название Я–А</option>
+          <option value="year:desc">Год: сначала новые</option>
+          <option value="rating:desc">Оценка: по убыванию</option>
+          <option value="rating:asc">Оценка: по возрастанию</option>
+        </select>
+      </div>
+
+      <p id="list-status" class="muted"></p>
+      <ul id="book-list" class="book-list"></ul>
+      <p id="list-error" class="error" hidden></p>
+      <button id="more-btn" class="btn btn-light" type="button" hidden>Показать ещё</button>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

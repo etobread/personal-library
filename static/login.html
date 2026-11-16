@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход — Моя библиотека</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-card">
+    <h1>Моя библиотека</h1>
+    <p class="auth-subtitle">Войдите, чтобы увидеть свои книги</p>
+
+    <form id="login-form">
+      <label>Логин
+        <input id="login" type="text" maxlength="30" autocomplete="username" required>
+      </label>
+      <label>Пароль
+        <input id="password" type="password" maxlength="72" autocomplete="current-password" required>
+      </label>
+      <button id="submit-btn" class="btn" type="submit">Войти</button>
+      <p id="form-error" class="error" hidden></p>
+    </form>
+
+    <p class="auth-link">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/login.js"></script>
+</body>
+</html>
